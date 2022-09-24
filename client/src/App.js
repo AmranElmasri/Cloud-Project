@@ -1,6 +1,6 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { GetForm, InsertForm } from "./pages";
+import { GetForm, InsertForm, ListKeys } from "./pages";
  
 
 function App() {
@@ -10,6 +10,7 @@ function App() {
         <Route path="/" element={<Navigate to="insertImage" />} />
         <Route path="/insertImage" element={<InsertForm />} />
         <Route path="/getImage" element={<GetForm />} />
+        <Route path="/listKeys" element={<ListKeys />} />
       </Routes>
     </Sidebar>
   );
