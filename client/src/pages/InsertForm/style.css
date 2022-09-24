@@ -1,0 +1,14 @@
+.insertForm {
+  width: 40%;
+  margin: 80px auto;
+}
+.input__file {
+  width: 400px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.input__file input {
+  cursor: pointer;
+}
