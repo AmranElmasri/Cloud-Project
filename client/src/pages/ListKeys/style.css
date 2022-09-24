@@ -1,0 +1,23 @@
+table {
+  width: 50%;
+  border: 1px solid #ddd;
+  text-align: center;
+  margin: 2rem auto;
+}
+caption {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.2em;
+  padding: 10px;
+}
+
+.table__img {
+  width: 150px;
+  height: 100px;
+}
+
+td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+}
