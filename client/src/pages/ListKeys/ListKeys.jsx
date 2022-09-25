@@ -21,7 +21,7 @@ const ListKeys = () => {
       </thead>
       <tbody>
         {list.map((item, index) => (
-          <tr>
+          <tr key={index}>
             <td>{`${item.key} ${index + 1}`}</td>
             <td>
               <img src={item.img} alt="img" className="table__img" />
