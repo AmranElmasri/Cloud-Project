@@ -53,7 +53,7 @@ const Sidebar = ({ children }) => {
           </div>
         </div>
         {menuItem.map((item, index) => (
-          <li>
+          <li key={item.name}>
             <NavLink to={item.path} key={index} className="link__item">
               <span className="icon">{item.icon}</span>
               <span

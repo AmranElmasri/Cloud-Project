@@ -1,6 +1,6 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import { Routes, Route, Navigate } from "react-router-dom";
-import { GetForm, InsertForm, ListKeys } from "./pages";
+import { ConfigureCache, GetForm, InsertForm, ListKeys, Statistics } from "./pages";
  
 
 function App() {
@@ -11,6 +11,8 @@ function App() {
         <Route path="/insertImage" element={<InsertForm />} />
         <Route path="/getImage" element={<GetForm />} />
         <Route path="/listKeys" element={<ListKeys />} />
+        <Route path="/mem-cache" element={<ConfigureCache/>} />
+        <Route path="/statistics" element={<Statistics/>} />
       </Routes>
     </Sidebar>
   );
