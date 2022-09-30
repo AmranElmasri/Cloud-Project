@@ -1,14 +1,37 @@
-import React from "react";
-import { Form, Input, Submit } from "../../components/FormUI";
-import "./style.css";
-import { Grid } from "@mui/material";
-import { insertImageSchema } from "../../utils";
+import React, { useState } from 'react';
+import { Form, Input, Submit } from '../../components/FormUI';
+import './style.css';
+import { Grid } from '@mui/material';
+import { getBase64, getError, insertImageSchema } from '../../utils';
+import axios from 'axios';
+import { useSnackbar } from 'notistack';
+
 
 const InsertForm = () => {
-  let initialValues = { key: "", image: "" };
-  const handleSubmit = (values) => {
-    console.log(values);
+  let initialValues = { key: '', image: '' };
+  const [base64, setBase64] = useState('');
+
+  const { enqueueSnackbar } = useSnackbar();
+
+  const handleSubmit = async (values) => {
+    values.image = base64;
+    try {
+      await axios.post('/api/v1/insert-img', values);
+    } catch (error) {
+      enqueueSnackbar(getError(error), {variant: 'error'});
+    }
   };
+  const handleFileInputChange = (e) => {
+    const file = e.target.files[0];
+    getBase64(file)
+      .then((base64) => {
+        setBase64(base64);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+  
   return (
     <div className="insertForm">
       <h3>Insert New Image</h3>
@@ -24,16 +47,16 @@ const InsertForm = () => {
               label="Key"
               type="text"
               size="small"
-              sx={{ backgroundColor: "#fff", marginLeft: "40px" }}
+              sx={{ backgroundColor: '#fff', marginLeft: '40px' }}
             />
           </Grid>
           <Grid item xs={12} sm={4}>
             <div className="input__file">
-              <input type="file" />
+              <input type="file" name="file" onChange={handleFileInputChange} />
             </div>
           </Grid>
-          <Grid item xs={12} sm={12} sx={{ textAlign: "center" }}>
-            <Submit variant="contained" sx={{ marginTop: "1rem" }}>
+          <Grid item xs={12} sm={12} sx={{ textAlign: 'center' }}>
+            <Submit variant="contained" sx={{ marginTop: '1rem' }}>
               Insert
             </Submit>
           </Grid>

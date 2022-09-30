@@ -1,3 +1,8 @@
+.list__keys {
+  width: 100%;
+  text-align: center;
+
+}
 table {
   width: 50%;
   border: 1px solid #ddd;

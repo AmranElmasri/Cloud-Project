@@ -1,6 +1,7 @@
 .insertForm {
-  width: 40%;
+  width: 60%;
   margin: 80px auto;
+  text-align: center;
 }
 .input__file {
   width: 400px;

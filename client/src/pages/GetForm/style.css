@@ -1,8 +1,19 @@
 .getForm {
-  width: 40%;
+  width: 60%;
   margin: 80px auto;
+  text-align: center;
+
 }
 
 h3 {
   text-align: center;
+}
+
+.retrieved__img {
+  margin-top: 1rem;
+}
+
+.retrieved__img img {
+  width: 100%;
+  object-fit: cover;
 }
