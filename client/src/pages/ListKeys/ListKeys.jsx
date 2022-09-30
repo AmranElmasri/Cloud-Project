@@ -9,12 +9,17 @@ const ListKeys = () => {
 
   useEffect(() => {
     (async () => {
-      setLoading(true);
-      const { data } = await axios.get('/api/v1/get-images');
-      setList(data);
-      setLoading(false);
+      try {
+        setLoading(true);
+        const { data } = await axios.get('/api/v1/get-images');
+        setList(data);
+        setLoading(false);
+      } catch (error) {
+        setLoading(false);
+      }
     })();
   }, []);
+  console.log(list);
 
   return (
     <div className="list__keys">
@@ -24,19 +29,24 @@ const ListKeys = () => {
           <tr>
             <th>Key</th>
             <th>Image</th>
+            <th>Date</th>
           </tr>
         </thead>
-        <tbody>
-          {list?.map((item) => (
-            <tr key={item.id}>
-              <td>{item.key}</td>
-              <td>
-                <img src={item.image} alt="img" className="table__img" />
-              </td>
-            </tr>
-          ))}
-        </tbody>
+        {list.length > 0 && (
+          <tbody>
+            {list?.map((item) => (
+              <tr key={item.id}>
+                <td>{item.key}</td>
+                <td>
+                  <img src={item.image} alt="img" className="table__img" />
+                </td>
+                <td>{item.posting_date.substring(0,10)}</td>
+              </tr>
+            ))}
+          </tbody>
+        )}
       </table>
+      {list.length === 0 && !loading && <h3>No Image Yet</h3>}
       {loading && <CircularProgress sx={{ marginTop: '4rem' }} />}
     </div>
   );
