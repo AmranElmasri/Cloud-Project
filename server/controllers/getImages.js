@@ -3,7 +3,6 @@ import { getImagesQuery } from '../database/index.js';
 const getImages = async (req, res, next) => {
   try {
     const { rows, rowCount } = await getImagesQuery();
-    console.log('rows: ', rows);
 
     if (rowCount === 0) {
       return res.status(404).json({ message: 'Images not found' });

@@ -19,7 +19,6 @@ const ListKeys = () => {
       }
     })();
   }, []);
-  console.log(list);
 
   return (
     <div className="list__keys">

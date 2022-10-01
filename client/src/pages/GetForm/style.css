@@ -10,10 +10,18 @@ h3 {
 }
 
 .retrieved__img {
-  margin-top: 1rem;
+  border: 1px solid #000;
+  width: 500px;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 2rem;
+  transition: all 0.3s ease-in-out;
 }
 
 .retrieved__img img {
   width: 100%;
   object-fit: cover;
+}
+.retrieved__img:hover {
+  transform: scale(1.1);
 }

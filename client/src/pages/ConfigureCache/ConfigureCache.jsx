@@ -5,7 +5,7 @@ const ConfigureCache = () => {
   return (
     <div className="mem__cache">
       <h2>Configure The mem-cache</h2>
-      <form>
+      <form className="selection__form">
         <div className="capacity">
           <label htmlFor="capacity "> Edit the capacity of mem-cache</label>
           <br />

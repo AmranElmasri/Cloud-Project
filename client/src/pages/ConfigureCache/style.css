@@ -2,12 +2,18 @@
   width: 100%;
   height: 100%;
 }
-form {
-  width: 100%;
+.selection__form {
+  width: 50%;
   height: 50%;
+  margin: auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+  background-color: #000000;
+  color: #fff;
+  border-radius: 10px;
 }
 h2 {
     text-align: center;
@@ -15,6 +21,12 @@ h2 {
 .capacity{
     text-align: center;
     width: 300px;
+}
+select {
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 1rem;
+
 }
 button {
     margin: 10px;
