@@ -15,6 +15,7 @@ const InsertForm = () => {
 
   const handleSubmit = async (values) => {
     values.image = base64;
+    
     try {
       const { data } = await axios.post('/api/v1/insert-img', values);
       enqueueSnackbar(data.message, { variant: 'success' });

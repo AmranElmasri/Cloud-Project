@@ -1,8 +1,13 @@
 import { checkKeyQuery, insertImageQuery } from '../database/index.js';
 import uploadToCloudinary from '../utils/cloudinary/index.js';
+import { cache } from '../routes/index.js';
 
 const insertImage = async (req, res, next) => {
   const { key, image } = req.body;
+
+  cache.put(key, image);
+  console.log('cache: ', cache);
+  
   try {
     const { rowCount } = await checkKeyQuery(key);
     if (rowCount !== 0) {

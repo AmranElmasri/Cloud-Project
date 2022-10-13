@@ -17,8 +17,9 @@ const GetForm = () => {
   const handleSubmit = async(values) => {
     try {
       setLoading(true);
-      const {data: {image}} = await axios.get(`/api/v1/get-image/?key=${values.key}`);
-      setImg(image);
+      const {data} = await axios.get(`/api/v1/get-image/?key=${values.key}`);
+      console.log('data: ', data);
+      setImg(data.image || data);
       setLoading(false);
       values.key = "";
     } catch (error) {

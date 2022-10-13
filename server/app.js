@@ -19,7 +19,7 @@ app.use([
 app.use(cors());
 app.disable('x-powered-by');
 
-app.set('port', process.env.PORT || 8080);
+app.set('port', process.env.PORT || 4000);
 
 app.use('/api/v1', router);
 
