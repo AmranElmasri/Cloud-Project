@@ -31,6 +31,11 @@ class LRUCache {
     this.map[key] = newNode;
     this.size++;
   }
+  clear(){
+    this.map = {};
+    this.list = new DoublyLinkedList();
+    this.size = 0;
+  }
 }
 class DoublyLinkedList {
   constructor() {

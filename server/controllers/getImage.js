@@ -1,12 +1,13 @@
-import { checkKeyQuery, getImageQuery } from '../database/index.js';
+import { checkKeyQuery, getImageQuery, getConfiguraitonQuery } from '../database/index.js';
 import { cache } from '../routes/index.js';
 
 const getImage = async (req, res, next) => {
   const { key } = req.query;
-  
-  console.log('cache: ', cache);
 
   try {
+    const { rows:cacheConfig } = await getConfiguraitonQuery();
+
+    
     if(cache.get(key) !== -1){
       return res.status(200).json(cache.get(key));
     }

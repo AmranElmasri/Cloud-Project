@@ -12,16 +12,24 @@ CREATE TABLE images (
 );
 
 CREATE TABLE cache_configuration (
-  capacity INTEGER NOT NULL,
-  replacement_policy VARCHAR(255) NOT NULL
+  id SERIAL PRIMARY KEY,
+  capacity INTEGER DEFAULT 10,
+  replacePolicy VARCHAR(255),
+  clearCache BOOLEAN DEFAULT FALSE,
+  date_created DATE NOT NULL DEFAULT CURRENT_DATE
+
 );
 
+INSERT INTO cache_configuration (capacity, replacePolicy) VALUES (10, 'LRU');
+
 CREATE TABLE cache_statistics (
-  items INTEGER NOT NULL,
-  size INTEGER NOT NULL,
-  number_of_requests INTEGER NOT NULL,
+  id SERIAL PRIMARY KEY,
+  items_no INTEGER NOT NULL,
+  items_size INTEGER NOT NULL,
+  requests_no INTEGER NOT NULL,
   miss_rate INTEGER NOT NULL,
-  hit_rate INTEGER NOT NULL
+  hit_rate INTEGER NOT NULL,
+  date_created DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
 COMMIT;

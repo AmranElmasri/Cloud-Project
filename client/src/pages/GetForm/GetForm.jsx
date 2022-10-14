@@ -18,7 +18,6 @@ const GetForm = () => {
     try {
       setLoading(true);
       const {data} = await axios.get(`/api/v1/get-image/?key=${values.key}`);
-      console.log('data: ', data);
       setImg(data.image || data);
       setLoading(false);
       values.key = "";
