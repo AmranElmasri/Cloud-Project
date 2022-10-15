@@ -20,15 +20,15 @@ CREATE TABLE cache_configuration (
 
 );
 
-INSERT INTO cache_configuration (capacity, replacePolicy) VALUES (10, 'LRU');
+INSERT INTO cache_configuration (capacity, replacePolicy) VALUES (10, 'least recently used');
 
 CREATE TABLE cache_statistics (
   id SERIAL PRIMARY KEY,
   items_no INTEGER NOT NULL,
   items_size INTEGER NOT NULL,
   requests_no INTEGER NOT NULL,
-  miss_rate INTEGER NOT NULL,
-  hit_rate INTEGER NOT NULL,
+  hit_rate INTEGER NOT NULL DEFAULT 0,
+  miss_rate INTEGER NOT NULL DEFAULT 0,
   date_created DATE NOT NULL DEFAULT CURRENT_DATE
 );
 

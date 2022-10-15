@@ -4,6 +4,9 @@ import {
   getImage,
   getImages,
   cacheConfiguration,
+  insertStatistics,
+  getStatistics,
+  getConfiguraiton,
 } from '../controllers/index.js';
 import { LRUCache, RandomCache } from '../utils/cache/index.js';
 import { saveConfiguratuin } from '../database/index.js';
@@ -32,14 +35,20 @@ router.post('/cache-configure', async (req, res, next) => {
 
   try {
     await saveConfiguratuin({ cacheCapacity, replacePolicy, clearCache });
+    res.status(200).json({ message: 'configuration saved successfully' });
   } catch (error) {
     return next(error);
   }
 });
 
+
 router.post('/insert-img', insertImage);
 router.get('/get-image', getImage);
 router.get('/get-images', getImages);
+router.get('/update-statistics', insertStatistics);
+router.get('/statistics', getStatistics);
+router.get('/getConfiguraiton', getConfiguraiton);
+
 
 export default router;
 export { cache };

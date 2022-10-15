@@ -1,17 +1,26 @@
-import { checkKeyQuery, getImageQuery, getConfiguraitonQuery } from '../database/index.js';
+import { checkKeyQuery, getImageQuery } from '../database/index.js';
 import { cache } from '../routes/index.js';
+import cookie from "cookies";
 
 const getImage = async (req, res, next) => {
+
   const { key } = req.query;
+  const cookies = new cookie(req, res);
 
   try {
-    const { rows:cacheConfig } = await getConfiguraitonQuery();
+    let hit_rate = cookies.get('hit_rate') ? JSON.parse(cookies.get('hit_rate')) : 0;
+    let miss_rate = cookies.get('miss_rate') ? JSON.parse(cookies.get('miss_rate')) : 0;
 
-    
+
+
     if(cache.get(key) !== -1){
+      hit_rate = Math.round(100 - (miss_rate / 2));
+      miss_rate = Math.round(100 - hit_rate);
+      cookies.set('hit_rate', JSON.stringify(hit_rate));
+      cookies.set('miss_rate', JSON.stringify(miss_rate));
       return res.status(200).json(cache.get(key));
     }
-
+    
     const {rowCount: oldKey} = await checkKeyQuery(key);
     if (oldKey === 0) {
       return res.status(400).json({ message: 'Key does not exist in our records' });
@@ -22,10 +31,16 @@ const getImage = async (req, res, next) => {
     }
     const image = rows[0];
     cache.put(key, image);
+    miss_rate = Math.round(100 - (hit_rate / 2));
+    hit_rate = Math.round(100 - miss_rate);
+    cookies.set('hit_rate', JSON.stringify(hit_rate));
+    cookies.set('miss_rate', JSON.stringify(miss_rate));
     return res.status(200).json(image);
+
   } catch (error) {
     return next(error);
   }
 };
 
 export default getImage;
+
