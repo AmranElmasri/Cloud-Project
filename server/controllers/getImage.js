@@ -1,11 +1,18 @@
 import { checkKeyQuery, getImageQuery } from '../database/index.js';
 import { cache } from '../routes/index.js';
 import cookie from "cookies";
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const getImage = async (req, res, next) => {
 
   const { key } = req.query;
   const cookies = new cookie(req, res);
+
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);  // because __dirname is not defined in ES module scope
+  const jsonPath = path.join(__dirname, "..", "utils", "images.json")
 
   try {
     let hit_rate = cookies.get('hit_rate') ? JSON.parse(cookies.get('hit_rate')) : 0;
@@ -14,6 +21,7 @@ const getImage = async (req, res, next) => {
 
 
     if(cache.get(key) !== -1){
+      console.log('cache: ', cache);
       hit_rate = Math.round(100 - (miss_rate / 2));
       miss_rate = Math.round(100 - hit_rate);
       cookies.set('hit_rate', JSON.stringify(hit_rate));
@@ -30,7 +38,13 @@ const getImage = async (req, res, next) => {
       return res.status(404).json({ message: 'Image not found' });
     }
     const image = rows[0];
-    cache.put(key, image);
+
+
+    const data = fs.readFileSync( jsonPath, 'utf8');
+    const obj = JSON.parse(data);
+
+    cache.put(obj[key].key, obj[key].image);
+
     miss_rate = Math.round(100 - (hit_rate / 2));
     hit_rate = Math.round(100 - miss_rate);
     cookies.set('hit_rate', JSON.stringify(hit_rate));
