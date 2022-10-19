@@ -8,7 +8,6 @@ const Statistics = () => {
     hit_rate: 0,
     miss_rate: 0,
   });
-  console.log('configuration: ', configuration);
 
 
   useEffect(() => {
