@@ -24,7 +24,7 @@ const ListKeys = () => {
   return (
     <div className="list__keys">
       <table>
-        <caption>List of Keys</caption>
+        <caption>List of images</caption>
         <thead>
           <tr>
             <th>Key</th>

@@ -6,4 +6,6 @@ export {default as saveConfiguratuin} from './quieres/saveConfiguratuin.js';
 export {default as getConfiguraitonQuery} from './quieres/getConfiguraitonQuery.js';
 export {default as insertStatisticsQuery} from './quieres/insertStatisticsQuery.js';
 export {default as getStatisticsQuery} from './quieres/getStatisticsQuery.js';
+export {default as updateCacheConfigQuery} from './quieres/updateCacheConfigQuery.js';
+
 
