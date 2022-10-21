@@ -47,7 +47,7 @@ const insertImage = async (req, res, next) => {
     const { rows } = await insertImageQuery(key, image);
     res
       .status(201)
-      .json({ data: rows[0], message: ' image added successfully!' });
+      .json({ data: rows[0], message: 'image added successfully!' });
   } catch (error) {
     return next(error);
   }

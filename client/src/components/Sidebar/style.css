@@ -1,13 +1,13 @@
 .container {
   display: flex;
+  overflow: hidden;
 }
 .sidebar {
   width: 250px;
-  padding: 1rem;
-  background: #000;
+  background-color: #18222c;
   color: #eee;
   min-height: 100vh;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease;
 }
 .top_section {
   display: flex;
@@ -18,13 +18,14 @@
 .menu__icon {
   font-size: 1.5rem;
   cursor: pointer;
+  padding-top: 1rem;
 }
 
 .link__item {
   display: flex;
   align-items: center;
   padding: 1rem;
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
 }
 .icon {
   margin-right: 1rem;
@@ -35,25 +36,18 @@
 }
 
 .link__item:hover {
-  background: #eee;
+  background-color: #0b1014;
   border-radius: 5px;
-}
-.link__item:hover > span {
-  color: #000;
 }
 
 .link__item.active {
-  background: #eee;
-  border-radius: 5px;
-}
-.link__item.active > span {
-  color: #000;
+  background-color: #0b1014;
 }
 
 main {
   flex: 1;
 }
 
-.sidebar.close{
-    width: 50px;
+.sidebar.close {
+  width: 60px;
 }

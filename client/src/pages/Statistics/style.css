@@ -1,0 +1,64 @@
+h1,
+p {
+  text-align: center;
+}
+p{
+    font-size: 1.5rem;
+
+}
+.CircularProgressbar__paper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.CircularProgressbar {
+  width: 120px !important;
+  height: 80% !important;
+  flex: 95%;
+  margin-top: 10px;
+}
+.CircularProgressbar p {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+.hit__rate__color {
+  height: 5%;
+  background-color: green;
+  width: 100%;
+  flex: 5%;
+}
+.miss__rate__color {
+  height: 5%;
+  background-color: rgb(206, 23, 17);
+  width: 100%;
+  flex: 5%;
+}
+.capacity__color {
+  height: 5%;
+  background-color: rgb(242, 145, 57);
+  width: 100%;
+  flex: 5%;
+}
+.policy__color {
+    height: 5%;
+    background-color: rgb(74, 177, 199);
+    width: 100%;
+    flex: 5%;
+}
+.capacity_stat {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.capacity_stat h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 0;
+}
+.capacity_stat p {
+    font-size: 1.4rem;
+}

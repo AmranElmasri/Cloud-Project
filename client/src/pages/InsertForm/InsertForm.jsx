@@ -6,7 +6,6 @@ import { getBase64, getError, insertImageSchema } from '../../utils';
 import axios from 'axios';
 import { useSnackbar } from 'notistack';
 
-
 const InsertForm = () => {
   let initialValues = { key: '', image: '' };
   const [base64, setBase64] = useState('');
@@ -15,14 +14,17 @@ const InsertForm = () => {
 
   const handleSubmit = async (values) => {
     values.image = base64;
-    
+
     try {
-      const { data } = await axios.post('/api/v1/insert-img', values);
-      enqueueSnackbar(data.message, { variant: 'success' });
-      values.key = '';
-      values.image = '';
+      if (base64) {
+        const { data } = await axios.post('/api/v1/insert-img', values);
+        enqueueSnackbar(data.message, { variant: 'success' });
+        values.key = '';
+        values.image = '';
+      }
     } catch (error) {
-      enqueueSnackbar(getError(error), {variant: 'error'});
+      console.log(error);
+      // enqueueSnackbar(getError(error), { variant: 'error' });
     }
   };
   const handleFileInputChange = (e) => {
@@ -35,7 +37,7 @@ const InsertForm = () => {
         console.log(error);
       });
   };
-  
+
   return (
     <div className="insertForm">
       <h3>Insert New Image</h3>
