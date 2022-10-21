@@ -46,7 +46,7 @@ const GetForm = () => {
             />
           </Grid>
           <Grid item xs={12} sm={4}>
-            <Submit variant="contained" sx={{ marginLeft: "4rem" }}>
+            <Submit variant="contained" sx={{ marginLeft: "4rem", height: "2.2rem" }}>
               Get
             </Submit>
           </Grid>

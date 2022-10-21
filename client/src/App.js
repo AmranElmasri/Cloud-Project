@@ -10,7 +10,7 @@ function App() {
   // setInterval(async() => {
   //   await axios.get('/api/v1/update-statistics');
   //   console.log("object");
-  // }, 300000);
+  // }, 5000);
   
   const fakeRequest = async() => {
     axios.get('/api/v1/update-statistics');
