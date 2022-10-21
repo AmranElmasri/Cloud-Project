@@ -21,7 +21,6 @@ const getImage = async (req, res, next) => {
 
 
     if(cache.get(key) !== -1){
-      console.log('cache: ', cache);
       hit_rate = Math.round(100 - (miss_rate / 2));
       miss_rate = Math.round(100 - hit_rate);
       cookies.set('hit_rate', JSON.stringify(hit_rate));

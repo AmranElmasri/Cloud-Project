@@ -3,8 +3,7 @@ import {
   insertImage,
   getImage,
   getImages,
-  cacheConfiguration,
-  insertStatistics,
+  updateStatistics,
   getStatistics,
   getConfiguraiton,
 } from '../controllers/index.js';
@@ -45,7 +44,7 @@ router.post('/cache-configure', async (req, res, next) => {
 router.post('/insert-img', insertImage);
 router.get('/get-image', getImage);
 router.get('/get-images', getImages);
-router.get('/update-statistics', insertStatistics);
+router.get('/update-statistics', updateStatistics);
 router.get('/statistics', getStatistics);
 router.get('/getConfiguraiton', getConfiguraiton);
 

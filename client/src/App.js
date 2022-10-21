@@ -7,18 +7,10 @@ import axios from "axios";
 function App() {
 
 
-  // setInterval(async() => {
-  //   await axios.get('/api/v1/update-statistics');
-  //   console.log("object");
-  // }, 5000);
+  setInterval(async() => {
+    await axios.get('/api/v1/update-statistics');
+  }, 5000);
   
-  const fakeRequest = async() => {
-    axios.get('/api/v1/update-statistics');
-    console.log("object");
-  }
-  fakeRequest();
-
-
   return (
     <Sidebar>
       <Routes>
