@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './style.css';
-import axios from 'axios';
+import axios from '../../apis/index';
 import { CircularProgress } from '@mui/material';
 
 const ListKeys = () => {
@@ -11,7 +11,7 @@ const ListKeys = () => {
     (async () => {
       try {
         setLoading(true);
-        const { data } = await axios.get('/api/v1/get-images');
+        const { data } = await axios.get('/get-images');
         setList(data);
         setLoading(false);
       } catch (error) {

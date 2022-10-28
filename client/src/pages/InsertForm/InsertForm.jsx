@@ -3,7 +3,7 @@ import { Form, Input, Submit } from '../../components/FormUI';
 import './style.css';
 import { Grid } from '@mui/material';
 import { getBase64, getError, insertImageSchema } from '../../utils';
-import axios from 'axios';
+import axios from '../../apis/index';
 import { useSnackbar } from 'notistack';
 
 const InsertForm = () => {
@@ -17,7 +17,7 @@ const InsertForm = () => {
 
     try {
       if (base64) {
-        const { data } = await axios.post('/api/v1/insert-img', values);
+        const { data } = await axios.post('/insert-img', values);
         enqueueSnackbar(data.message, { variant: 'success' });
         values.key = '';
         values.image = '';

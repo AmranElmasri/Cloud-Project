@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './style.css';
-import axios from 'axios';
+import axios from '../../apis/index';
 import { useSnackbar } from 'notistack';
 import { Paper } from '@mui/material';
 
@@ -16,7 +16,7 @@ const ConfigureCache = () => {
   const handleSubmit = async (e) => {
     console.log(configure);
     e.preventDefault();
-    const { data } = await axios.post('/api/v1/cache-configure', configure);
+    const { data } = await axios.post('/cache-configure', configure);
     enqueueSnackbar(data.message, { variant: 'success' });
   };
 

@@ -1,4 +1,4 @@
-import axios from 'axios';
+import axios from '../../apis';
 import React, { useEffect, useState } from 'react';
 import Container from '@mui/material/Container';
 import { Paper, Grid } from '@mui/material';
@@ -16,8 +16,8 @@ const Statistics = () => {
 
   useEffect(() => {
     (async () => {
-      const { data: data1 } = await axios.get('/api/v1/getConfiguraiton');
-      const { data: data2 } = await axios.get('/api/v1/statistics');
+      const { data: data1 } = await axios.get('/getConfiguraiton');
+      const { data: data2 } = await axios.get('/statistics');
       setConfiguration({
         ...configuration,
         capacity: data1[data1.length - 1].capacity,

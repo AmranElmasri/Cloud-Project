@@ -3,7 +3,7 @@ import { Form, Input, Submit } from "../../components/FormUI";
 import "./style.css";
 import { Grid } from "@mui/material";
 import { getError, getImageSchema } from "../../utils";
-import axios from "axios";
+import axios from "../../apis/index";
 import { CircularProgress } from '@mui/material';
 import { useSnackbar } from 'notistack';
 
@@ -17,7 +17,7 @@ const GetForm = () => {
   const handleSubmit = async(values) => {
     try {
       setLoading(true);
-      const {data} = await axios.get(`/api/v1/get-image/?key=${values.key}`);
+      const {data} = await axios.get(`/get-image/?key=${values.key}`);
       setImg(data.image || data);
       setLoading(false);
       values.key = "";

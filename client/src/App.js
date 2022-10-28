@@ -1,14 +1,14 @@
 import Sidebar from "./components/Sidebar/Sidebar";
 import { Routes, Route, Navigate } from "react-router-dom";
 import { ConfigureCache, GetForm, InsertForm, ListKeys, Statistics } from "./pages";
-import axios from "axios";
+import axios from "./apis/index";
  
 
 function App() {
 
 
   setInterval(async() => {
-    await axios.get('/api/v1/update-statistics');
+    await axios.get('/update-statistics');
   }, 5000);
   
   return (
