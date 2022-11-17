@@ -19,7 +19,7 @@ const getImage = async (req, res, next) => {
     let miss_rate = cookies.get('miss_rate') ? JSON.parse(cookies.get('miss_rate')) : 0;
 
 
-
+    // cache hit
     if(cache.get(key) !== -1){
       hit_rate = Math.round(100 - (miss_rate / 2));
       miss_rate = Math.round(100 - hit_rate);
@@ -39,10 +39,11 @@ const getImage = async (req, res, next) => {
     const image = rows[0];
 
 
-    const data = fs.readFileSync( jsonPath, 'utf8');
-    const obj = JSON.parse(data);
+    // const data = fs.readFileSync( jsonPath, 'utf8');
+    // const obj = JSON.parse(data);
+    // cache.put(obj[key].key, obj[key].image);
 
-    cache.put(obj[key].key, obj[key].image);
+    cache.put(key, image);
 
     miss_rate = Math.round(100 - (hit_rate / 2));
     hit_rate = Math.round(100 - miss_rate);
