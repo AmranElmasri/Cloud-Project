@@ -4,11 +4,11 @@ import {
   getConfiguraitonQuery,
 } from '../database/index.js';
 import uploadToCloudinary from '../utils/cloudinary/index.js';
-import LRUCache from '../utils/cache/LRUCache.js';
 import { cache } from '../routes/index.js';
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import uploadToS3 from '../utils/awsS3/index.js';
 
 
 const insertImage = async (req, res, next) => {
@@ -19,19 +19,19 @@ const insertImage = async (req, res, next) => {
   const jsonPath = path.join(__dirname, "..", "utils", "images.json")
 
   try {
-      fs.readFile(jsonPath, 'UTF8', (err, data) => {
-        if (err) {
-          console.log(err);
-        } else {
-          const obj = JSON.parse(data);
-          obj[key] = req.body;
-          fs.writeFile(jsonPath, JSON.stringify(obj), (err) => {
-            if (err) {
-              console.log(err);
-            }
-          });
-        }
-      });
+      // fs.readFile(jsonPath, 'UTF8', (err, data) => {
+      //   if (err) {
+      //     console.log(err);
+      //   } else {
+      //     const obj = JSON.parse(data);
+      //     obj[key] = req.body;
+      //     fs.writeFile(jsonPath, JSON.stringify(obj), (err) => {
+      //       if (err) {
+      //         console.log(err);
+      //       }
+      //     });
+      //   }
+      // });
 
     const { rowCount } = await checkKeyQuery(key);
     if (rowCount !== 0) {
@@ -41,10 +41,10 @@ const insertImage = async (req, res, next) => {
 
     console.log("first") 
     // const img_url = await uploadToCloudinary(image);
+    const img_url = await uploadToS3(key, image);
 
     cache.capacity = cacheConfig[cacheConfig.length - 1].capacity;
-    // cache.put(key, img_url);
-    const { rows } = await insertImageQuery(key, image);
+    const { rows } = await insertImageQuery(key, img_url.Location);
     res
       .status(201)
       .json({ data: rows[0], message: 'image added successfully!' });
