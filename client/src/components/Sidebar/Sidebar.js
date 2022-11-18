@@ -7,6 +7,7 @@ import CachedIcon from '@mui/icons-material/Cached';
 import BarChartIcon from "@mui/icons-material/BarChart";
 import MenuIcon from "@mui/icons-material/Menu";
 import CloseIcon from "@mui/icons-material/Close";
+import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import "./style.css";
 
 const Sidebar = ({ children }) => {
@@ -16,6 +17,11 @@ const Sidebar = ({ children }) => {
   };
 
   const menuItem = [
+    {
+      path: "/manager",
+      name: "manager-app",
+      icon: <ManageAccountsIcon />,
+    },
     {
       path: "/insertImage",
       name: "Insert Image",
