@@ -17,11 +17,11 @@ const Sidebar = ({ children }) => {
   };
 
   const menuItem = [
-    {
-      path: "/manager",
-      name: "manager-app",
-      icon: <ManageAccountsIcon />,
-    },
+    // {
+    //   path: "/manager",
+    //   name: "manager-app",
+    //   icon: <ManageAccountsIcon />,
+    // },
     {
       path: "/insertImage",
       name: "Insert Image",

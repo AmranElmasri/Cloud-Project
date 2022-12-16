@@ -20,7 +20,7 @@ function App() {
         <Route path="/listKeys" element={<ListKeys />} />
         <Route path="/mem-cache" element={<ConfigureCache/>} />
         <Route path="/statistics" element={<Statistics/>} />
-        <Route path="/manager" element={<ManagerApp/>} />
+        {/* <Route path="/manager" element={<ManagerApp/>} /> */}
       </Routes>
     </Sidebar>
   );
