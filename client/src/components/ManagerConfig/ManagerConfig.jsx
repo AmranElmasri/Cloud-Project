@@ -43,22 +43,25 @@ const ManagerConfig = () => {
             </label>
           </div>
           <div>
+            <p style={{ display: "inline-block" }}>
+              Selecting between (Manual mode-Automatically mode) for resizing
+              the mem-cache
+            </p>
             <select name="resizeMemCahe" onClick={setResizeMemCache}>
-              <label>
-                <p style={{ display: "inline-block" }}>
-                  Selecting between (Manual mode-Automatically mode) for
-                  resizing the mem-cache
-                </p>
-              </label>
               <option value="manual">Manual</option>
               <option value="auto">Automatic</option>
             </select>
-            <div style={{fontSize: "20px"}}>
+            <div style={{ fontSize: "20px" }}>
               {resize === "manual" && (
-                <input type="number" name="resizeMemCahe" max={8} min={1} style={{width: "100px" }}/>
+                <input
+                  type="number"
+                  name="resizeMemCahe"
+                  max={8}
+                  min={1}
+                  style={{ width: "100px" }}
+                />
               )}
             </div>
-
           </div>
           <button> Submit </button>
         </div>
